@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<log>
+
+<object-types>
+  <object-type name="case">
+    <attributes>
+      <attribute name="priority" type="string"/>
+    </attributes>
+  </object-type>
+
+  <object-type name="doctor">
+    <attributes>
+      <attribute name="specialty" type="string"/>
+    </attributes>
+  </object-type>
+
+  <object-type name="imaging order">
+    <attributes>
+      <attribute name="modality" type="string"/>
+    </attributes>
+  </object-type>
+
+  <object-type name="image">
+    <attributes>
+      <attribute name="resolution" type="string"/>
+    </attributes>
+  </object-type>
+</object-types>
+
+<event-types>
+  <event-type name="open case"><attributes/></event-type>
+  <event-type name="issue imaging order"><attributes/></event-type>
+  <event-type name="capture image"><attributes/></event-type>
+  <event-type name="review image"><attributes/></event-type>
+  <event-type name="archive image"><attributes/></event-type>
+</event-types>
+
+<objects>
+  <object id="c1" type="case">
+    <attributes>
+      <attribute name="priority" time="2024-02-01T08:00:00Z">high</attribute>
+    </attributes>
+    <objects>
+      <relationship object-id="io1" qualifier="includes"/>
+      <relationship object-id="io2" qualifier="includes"/>
+    </objects>
+  </object>
+
+  <object id="c2" type="case">
+    <attributes>
+      <attribute name="priority" time="2024-02-02T08:00:00Z">low</attribute>
+    </attributes>
+    <objects>
+      <relationship object-id="io3" qualifier="includes"/>
+    </objects>
+  </object>
+
+  <object id="d1" type="doctor">
+    <attributes>
+      <attribute name="specialty" time="2024-02-01T08:00:00Z">radiology</attribute>
+    </attributes>
+  </object>
+
+  <object id="d2" type="doctor">
+    <attributes>
+      <attribute name="specialty" time="2024-02-01T08:00:00Z">orthopedics</attribute>
+    </attributes>
+  </object>
+
+  <object id="io1" type="imaging order">
+    <attributes>
+      <attribute name="modality" time="2024-02-01T08:10:00Z">CT</attribute>
+    </attributes>
+    <objects>
+      <relationship object-id="img1" qualifier="produces"/>
+    </objects>
+  </object>
+
+  <object id="io2" type="imaging order">
+    <attributes>
+      <attribute name="modality" time="2024-02-01T08:15:00Z">X-ray</attribute>
+    </attributes>
+    <objects>
+      <relationship object-id="img2" qualifier="produces"/>
+    </objects>
+  </object>
+
+  <object id="io3" type="imaging order">
+    <attributes>
+      <attribute name="modality" time="2024-02-02T08:25:00Z">MRI</attribute>
+    </attributes>
+    <objects>
+      <relationship object-id="img3" qualifier="produces"/>
+    </objects>
+  </object>
+
+  <object id="img1" type="image">
+    <attributes>
+      <attribute name="resolution" time="2024-02-01T09:00:00Z">high</attribute>
+    </attributes>
+  </object>
+
+  <object id="img2" type="image">
+    <attributes>
+      <attribute name="resolution" time="2024-02-01T09:10:00Z">medium</attribute>
+    </attributes>
+  </object>
+
+  <object id="img3" type="image">
+    <attributes>
+      <attribute name="resolution" time="2024-02-02T09:20:00Z">high</attribute>
+    </attributes>
+  </object>
+</objects>
+
+<events>
+  <!-- open case -->
+  <event id="open_c1" type="open case" time="2024-02-01T08:00:00Z">
+    <attributes/>
+    <objects>
+      <relationship object-id="c1" qualifier="case"/>
+    </objects>
+  </event>
+
+  <event id="open_c2" type="open case" time="2024-02-02T08:00:00Z">
+    <attributes/>
+    <objects>
+      <relationship object-id="c2" qualifier="case"/>
+    </objects>
+  </event>
+
+  <!-- issue imaging order -->
+  <event id="issue_1" type="issue imaging order" time="2024-02-01T08:10:00Z">
+    <attributes/>
+    <objects>
+      <relationship object-id="c1" qualifier="case"/>
+      <relationship object-id="d1" qualifier="doctor"/>
+      <relationship object-id="io1" qualifier="order"/>
+    </objects>
+  </event>
+
+  <event id="issue_2" type="issue imaging order" time="2024-02-01T08:15:00Z">
+    <attributes/>
+    <objects>
+      <relationship object-id="c1" qualifier="case"/>
+      <relationship object-id="d1" qualifier="doctor"/>
+      <relationship object-id="io2" qualifier="order"/>
+    </objects>
+  </event>
+
+  <event id="issue_3" type="issue imaging order" time="2024-02-02T08:25:00Z">
+    <attributes/>
+    <objects>
+      <relationship object-id="c2" qualifier="case"/>
+      <relationship object-id="d2" qualifier="doctor"/>
+      <relationship object-id="io3" qualifier="order"/>
+    </objects>
+  </event>
+
+  <!-- capture image -->
+  <event id="capture_img1" type="capture image" time="2024-02-01T09:00:00Z">
+    <attributes/>
+    <objects>
+      <relationship object-id="c1" qualifier="case"/>
+      <relationship object-id="io1" qualifier="order"/>
+      <relationship object-id="img1" qualifier="image"/>
+    </objects>
+  </event>
+
+  <event id="capture_img2" type="capture image" time="2024-02-01T09:10:00Z">
+    <attributes/>
+    <objects>
+      <relationship object-id="c1" qualifier="case"/>
+      <relationship object-id="io2" qualifier="order"/>
+      <relationship object-id="img2" qualifier="image"/>
+    </objects>
+  </event>
+
+  <event id="capture_img3" type="capture image" time="2024-02-02T09:20:00Z">
+    <attributes/>
+    <objects>
+      <relationship object-id="c2" qualifier="case"/>
+      <relationship object-id="io3" qualifier="order"/>
+      <relationship object-id="img3" qualifier="image"/>
+    </objects>
+  </event>
+
+  <!-- review image -->
+  <event id="review_1" type="review image" time="2024-02-01T09:40:00Z">
+    <attributes/>
+    <objects>
+      <relationship object-id="c1" qualifier="case"/>
+      <relationship object-id="d1" qualifier="doctor"/>
+      <relationship object-id="img1" qualifier="image"/>
+    </objects>
+  </event>
+
+  <event id="review_2" type="review image" time="2024-02-01T09:45:00Z">
+    <attributes/>
+    <objects>
+      <relationship object-id="c1" qualifier="case"/>
+      <relationship object-id="d1" qualifier="doctor"/>
+      <relationship object-id="img2" qualifier="image"/>
+    </objects>
+  </event>
+
+  <event id="review_3" type="review image" time="2024-02-02T09:50:00Z">
+    <attributes/>
+    <objects>
+      <relationship object-id="c2" qualifier="case"/>
+      <relationship object-id="d2" qualifier="doctor"/>
+      <relationship object-id="img3" qualifier="image"/>
+    </objects>
+  </event>
+
+  <!-- archive image -->
+  <event id="archive_img1" type="archive image" time="2024-02-01T10:00:00Z">
+    <attributes/>
+    <objects>
+      <relationship object-id="img1" qualifier="image"/>
+    </objects>
+  </event>
+
+  <event id="archive_img2" type="archive image" time="2024-02-01T10:05:00Z">
+    <attributes/>
+    <objects>
+      <relationship object-id="img2" qualifier="image"/>
+    </objects>
+  </event>
+
+  <event id="archive_img3" type="archive image" time="2024-02-02T10:10:00Z">
+    <attributes/>
+    <objects>
+      <relationship object-id="img3" qualifier="image"/>
+    </objects>
+  </event>
+</events>
+
+</log>

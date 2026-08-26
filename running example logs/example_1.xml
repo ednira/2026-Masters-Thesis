@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Business process: Order Fulfillment with Containers and Boxes -->
+
+<log>
+
+<object-types>
+  <object-type name="order"><attributes/></object-type>
+  <object-type name="box"><attributes/></object-type>
+</object-types>
+
+<event-types>
+  <event-type name="prepare package"><attributes/></event-type>
+  <event-type name="dispatch"><attributes/></event-type>
+</event-types>
+
+<objects>
+  <object id="o1" type="order"><attributes/></object>
+  <object id="o2" type="order"><attributes/></object>
+  <object id="o3" type="order"><attributes/></object>
+  <object id="o4" type="order"><attributes/></object>
+
+  <object id="b1" type="box"><attributes/></object>
+  <object id="b2" type="box"><attributes/></object>
+  <object id="b3" type="box"><attributes/></object>
+  <object id="b4" type="box"><attributes/></object>
+</objects>
+
+<events>
+
+  <!-- original events (unchanged) -->
+
+  <event id="e1" type="prepare package" time="2024-01-01T01:00:00Z">
+    <attributes/><objects>
+    <relationship object-id="o1" qualifier="order"/>
+    <relationship object-id="b1" qualifier="box"/>
+    </objects>
+  </event>
+
+  <event id="e2" type="dispatch" time="2024-01-01T02:00:00Z">
+    <attributes/><objects>
+    <relationship object-id="o1" qualifier="order"/>
+    <relationship object-id="b1" qualifier="box"/>
+    </objects>
+  </event>
+
+  <event id="e3" type="prepare package" time="2024-01-01T03:00:00Z">
+    <attributes/><objects>
+    <relationship object-id="o2" qualifier="order"/>
+    <relationship object-id="b2" qualifier="box"/>
+    </objects>
+  </event>
+
+  <event id="e4" type="dispatch" time="2024-01-01T04:00:00Z">
+    <attributes/><objects>
+    <relationship object-id="o2" qualifier="order"/>
+    <relationship object-id="b2" qualifier="box"/>
+    </objects>
+  </event>
+
+  <event id="e5" type="prepare package" time="2024-01-01T05:00:00Z">
+    <attributes/>
+    <objects>
+      <relationship object-id="o3" qualifier="order"/>
+      <relationship object-id="b3" qualifier="box"/>
+    </objects>
+  </event>
+
+  <event id="e6" type="dispatch" time="2024-01-01T06:00:00Z">
+    <attributes/><objects>
+    <relationship object-id="o3" qualifier="order"/>
+    <relationship object-id="b3" qualifier="box"/>
+    </objects>
+  </event>
+
+  <event id="e7" type="prepare package" time="2024-01-01T07:00:00Z">
+    <attributes/>
+    <objects>
+      <relationship object-id="o4" qualifier="order"/>
+      <relationship object-id="b4" qualifier="box"/>
+    </objects>
+  </event>
+
+  <event id="e9" type="dispatch" time="2024-01-01T09:00:00Z">
+    <attributes/><objects>
+    <relationship object-id="o4" qualifier="order"/>
+    <relationship object-id="b4" qualifier="box"/>
+    </objects>
+  </event>
+
+ 
+</events>
+
+</log>

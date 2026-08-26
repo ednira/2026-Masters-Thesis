@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<log>
+
+<object-types>
+  <object-type name="air company"><attributes/></object-type>
+  <object-type name="route"><attributes/></object-type>
+  <object-type name="flight"><attributes/></object-type>
+  <object-type name="airport"><attributes/></object-type>
+</object-types>
+
+<event-types>
+  <event-type name="schedule flight"><attributes/></event-type>
+  <event-type name="board flight"><attributes/></event-type>
+  <event-type name="complete flight"><attributes/></event-type>
+  <event-type name="cancel flight"><attributes/></event-type>
+  <event-type name="close flight"><attributes/></event-type>
+</event-types>
+
+<objects>
+  <object id="ac1" type="air company"/>
+  <object id="ac2" type="air company"/>
+  <object id="ac3" type="air company"/>
+
+  <object id="r1" type="route"/>
+  <object id="r2" type="route"/>
+
+  <object id="ap1" type="airport"/>
+  <object id="ap2" type="airport"/>
+
+  <object id="f1" type="flight"/>
+  <object id="f2" type="flight"/>
+  <object id="f3" type="flight"/>
+  <object id="f4" type="flight"/>
+  <object id="f5" type="flight"/>
+  <object id="f6" type="flight"/>
+  <object id="f7" type="flight"/>
+</objects>
+
+<events>
+  <event id="e1" type="schedule flight" time="2024-01-01T08:00:00Z">
+    <objects>
+      <relationship object-id="ac1" qualifier="air company"/>
+      <relationship object-id="r1" qualifier="route"/>
+      <relationship object-id="f1" qualifier="flight"/>
+      <relationship object-id="f2" qualifier="flight"/>
+    </objects>
+  </event>
+
+  <event id="e2" type="schedule flight" time="2024-01-01T08:05:00Z">
+    <objects>
+      <relationship object-id="ac2" qualifier="air company"/>
+      <relationship object-id="r2" qualifier="route"/>
+      <relationship object-id="f3" qualifier="flight"/>
+      <relationship object-id="f4" qualifier="flight"/>
+    </objects>
+  </event>
+
+  <event id="e3" type="schedule flight" time="2024-01-01T08:10:00Z">
+    <objects>
+      <relationship object-id="ac3" qualifier="air company"/>
+      <relationship object-id="r1" qualifier="route"/>
+      <relationship object-id="f5" qualifier="flight"/>
+      <relationship object-id="f6" qualifier="flight"/>
+      <relationship object-id="f7" qualifier="flight"/>
+    </objects>
+  </event>
+
+  <event id="e4" type="board flight" time="2024-01-01T09:00:00Z">
+    <objects>
+      <relationship object-id="ap1" qualifier="airport"/>
+      <relationship object-id="f1" qualifier="flight"/>
+      <relationship object-id="f2" qualifier="flight"/>
+    </objects>
+  </event>
+
+  <event id="e5" type="board flight" time="2024-01-01T09:10:00Z">
+    <objects>
+      <relationship object-id="ap2" qualifier="airport"/>
+      <relationship object-id="f3" qualifier="flight"/>
+      <relationship object-id="f4" qualifier="flight"/>
+      <relationship object-id="f5" qualifier="flight"/>
+    </objects>
+  </event>
+
+  <event id="e6" type="board flight" time="2024-01-01T09:20:00Z">
+    <objects>
+      <relationship object-id="ap1" qualifier="airport"/>
+      <relationship object-id="f6" qualifier="flight"/>
+      <relationship object-id="f7" qualifier="flight"/>
+    </objects>
+  </event>
+
+  <event id="e7" type="complete flight" time="2024-01-01T11:00:00Z">
+    <objects>
+      <relationship object-id="ap2" qualifier="airport"/>
+      <relationship object-id="f1" qualifier="flight"/>
+      <relationship object-id="f3" qualifier="flight"/>
+    </objects>
+  </event>
+
+  <event id="e8" type="complete flight" time="2024-01-01T11:10:00Z">
+    <objects>
+      <relationship object-id="ap2" qualifier="airport"/>
+      <relationship object-id="f4" qualifier="flight"/>
+    </objects>
+  </event>
+
+  <event id="e9" type="complete flight" time="2024-01-01T11:20:00Z">
+    <objects>
+      <relationship object-id="ap2" qualifier="airport"/>
+      <relationship object-id="f5" qualifier="flight"/>
+    </objects>
+  </event>
+
+  <event id="e10" type="cancel flight" time="2024-01-01T10:00:00Z">
+    <objects>
+      <relationship object-id="ap1" qualifier="airport"/>
+      <relationship object-id="f2" qualifier="flight"/>
+    </objects>
+  </event>
+
+  <event id="e11" type="cancel flight" time="2024-01-01T10:05:00Z">
+    <objects>
+      <relationship object-id="ap1" qualifier="airport"/>
+      <relationship object-id="f6" qualifier="flight"/>
+    </objects>
+  </event>
+
+  <event id="e12" type="cancel flight" time="2024-01-01T10:10:00Z">
+    <objects>
+      <relationship object-id="ap1" qualifier="airport"/>
+      <relationship object-id="f7" qualifier="flight"/>
+    </objects>
+  </event>
+
+  <event id="e13" type="close flight" time="2024-01-01T13:05:00Z">
+    <objects>
+      <relationship object-id="ap1" qualifier="airport"/>
+      <relationship object-id="f1" qualifier="flight"/>
+      <relationship object-id="f2" qualifier="flight"/>
+    </objects>
+  </event>
+
+  <event id="e14" type="close flight" time="2024-01-01T13:15:00Z">
+    <objects>
+      <relationship object-id="ap2" qualifier="airport"/>
+      <relationship object-id="f4" qualifier="flight"/>
+    </objects>
+  </event>
+
+  <event id="e15" type="close flight" time="2024-01-01T13:25:00Z">
+    <objects>
+      <relationship object-id="ap2" qualifier="airport"/>
+      <relationship object-id="f5" qualifier="flight"/>
+    </objects>
+  </event>
+
+  <event id="e16" type="close flight" time="2024-01-01T13:05:00Z">
+    <objects>
+      <relationship object-id="ap2" qualifier="airport"/>
+      <relationship object-id="f3" qualifier="flight"/>
+    </objects>
+  </event>
+
+  <event id="e17" type="close flight" time="2024-01-01T13:10:00Z">
+    <objects>
+      <relationship object-id="ap1" qualifier="airport"/>
+      <relationship object-id="f6" qualifier="flight"/>
+    </objects>
+  </event>
+
+  <event id="e18" type="close flight" time="2024-01-01T13:15:00Z">
+    <objects>
+      <relationship object-id="ap1" qualifier="airport"/>
+      <relationship object-id="f7" qualifier="flight"/>
+    </objects>
+  </event>
+</events>
+
+</log>
