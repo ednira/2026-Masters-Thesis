@@ -1,7 +1,0 @@
-{'END_container': [([('send', 'container', 0, (1, inf))], 6)],
- 'END_order': [([('send', 'order', 0, (1, inf))], 6)],
- 'get container': [([('START_container', 'container', 0, (1, 2))], 4)],
- 'place order': [([('START_order', 'order', 0, (1, 1))], 6)],
- 'send': [([('get container', 'container', 0, (1, 1)),
-            ('place order', 'order', 0, (1, 1))],
-           6)]}

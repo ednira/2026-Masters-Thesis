@@ -1,8 +1,0 @@
-{'START_box': [([('prepare package', 'box', 0, (1, inf))], 4)],
- 'START_order': [([('prepare package', 'order', 0, (1, inf))], 4)],
- 'dispatch': [([('END_box', 'box', 0, (1, 1)),
-                ('END_order', 'order', 0, (1, 1))],
-               4)],
- 'prepare package': [([('dispatch', 'order', 0, (1, 1)),
-                       ('dispatch', 'box', 0, (1, 1))],
-                      4)]}
