@@ -1,3 +1,3 @@
-# 2026
+# 2026 Master's Thesis at DSV/SU
 
-Folder with my new files for tests.
+This repository contains resources related to my master's thesis.
